@@ -17,8 +17,7 @@ def mine():
     
     # Running the proof of work algorithm to get the next proof of work
     last_block = blockchain.last_block
-    last_proof = last_block.proof
-    proof = blockchain.proof_of_work(last_proof)
+    proof = blockchain.proof_of_work(last_block)
 
     # We must receive a reward for finding the proof.
     # The sender is "0" to signify that this node has mined a new coin.
@@ -35,7 +34,7 @@ def mine():
     response = {
         'message': "New Block Forged",
         'index': block['index'],
-        'transaction': block['transaction'],
+        'transaction': block['transactions'],
         'proof': block['proof'],
         'previous_hash': block['previous_hash']
     }
